@@ -6,6 +6,12 @@ Um aplicativo Flutter que demonstra a implementação de:
 - Onboarding com 3 telas
 - Página de boas-vindas personalizada
 
+## 🎥 Demonstração
+
+<div align="center">
+  <img src="assets/animations/app_demo.gif" width="300" alt="Demonstração do App">
+</div>
+
 ## 🚀 Instalação
 
 1. Clone o repositório:
@@ -92,11 +98,6 @@ flutter run
   <img src="assets/images/screenshots5.png" width="200" alt="Welcome Screen">
 </div>
 
-## 🎥 Demonstração
-
-<div align="center">
-  <img src="assets/animations/app_demo.gif" width="300" alt="Demonstração do App">
-</div>
 
 ## 👥 Equipe
 
