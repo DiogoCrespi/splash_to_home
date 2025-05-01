@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:splash_to_home/screens/welcome/welcome_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -208,9 +209,16 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(
-              page['image']!,
+            CachedNetworkImage(
+              imageUrl: page['image']!,
               height: 200,
+              placeholder: (context, url) => const Center(
+                child: CircularProgressIndicator(),
+              ),
+              errorWidget: (context, url, error) => const Icon(Icons.error),
+              fadeInDuration: const Duration(milliseconds: 300),
+              memCacheWidth: 400,
+              memCacheHeight: 400,
             ),
             const SizedBox(height: 40),
             Text(
