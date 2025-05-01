@@ -86,6 +86,8 @@ flutter run
   <img src="assets/images/screenshots1.png" width="200" alt="screenshots 1">
   <img src="assets/images/screenshots2.png" width="200" alt="screenshots 2">
   <img src="assets/images/screenshots3.png" width="200" alt="screenshots 3">
+  </div>
+<div align="center">
   <img src="assets/images/screenshots4.png" width="200" alt="screenshots 4">
   <img src="assets/images/screenshots5.png" width="200" alt="Welcome Screen">
 </div>
