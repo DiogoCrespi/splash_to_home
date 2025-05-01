@@ -4,6 +4,7 @@ import 'package:splash_to_home/screens/welcome/welcome_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
+// Tela de Onboarding com navegação e entrada de nome
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
 
@@ -12,11 +13,16 @@ class OnboardingScreen extends StatefulWidget {
 }
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
+  // Controlador para gerenciar a navegação entre páginas
   final PageController _pageController = PageController();
+  // Página atual do onboarding
   int _currentPage = 0;
+  // Controlador para o campo de texto do nome
   final TextEditingController _nameController = TextEditingController();
+  // Controla a visibilidade dos botões de navegação
   bool _showNavigationButtons = false;
 
+  // Lista de páginas do onboarding com título, descrição e imagem
   final List<Map<String, String>> _onboardingPages = [
     {
       'title': 'Bem-vindo ao App',
@@ -37,11 +43,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   void dispose() {
+    // Libera os recursos dos controladores
     _pageController.dispose();
     _nameController.dispose();
     super.dispose();
   }
 
+  // Salva o nome do usuário e navega para a tela de boas-vindas
   Future<void> _saveNameAndNavigate() async {
     if (_nameController.text.isNotEmpty) {
       final prefs = await SharedPreferences.getInstance();
@@ -57,6 +65,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     }
   }
 
+  // Navega para a próxima página
   void _nextPage() {
     if (_currentPage < _onboardingPages.length) {
       _pageController.nextPage(
@@ -66,6 +75,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     }
   }
 
+  // Navega para a página anterior
   void _previousPage() {
     if (_currentPage > 0) {
       _pageController.previousPage(
@@ -75,6 +85,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     }
   }
 
+  // Navega para uma página específica
   void _goToPage(int page) {
     _pageController.animateToPage(
       page,
@@ -88,6 +99,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     return Scaffold(
       body: SafeArea(
         child: MouseRegion(
+          // Mostra/esconde os botões de navegação ao passar o mouse
           onEnter: (_) => setState(() => _showNavigationButtons = true),
           onExit: (_) => setState(() => _showNavigationButtons = false),
           child: Stack(
