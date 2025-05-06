@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       title: 'Splash to Home',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 147, 49, 186)),
         useMaterial3: true,
       ),
       home: const SplashScreen(),

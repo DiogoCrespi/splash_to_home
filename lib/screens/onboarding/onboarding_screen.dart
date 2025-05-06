@@ -172,7 +172,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   }) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: const Color.fromARGB(255, 216, 210, 213),
         shape: BoxShape.circle,
         boxShadow: [
           BoxShadow(
