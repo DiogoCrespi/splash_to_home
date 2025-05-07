@@ -272,7 +272,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           SizedBox(
             width: 600,
             child: TextField(
-
                 controller: _nameController,
                 decoration: InputDecoration(
                   hintText: 'Digite seu nome',
