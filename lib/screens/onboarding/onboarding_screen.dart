@@ -13,16 +13,11 @@ class OnboardingScreen extends StatefulWidget {
 }
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
-  // Controlador para gerenciar a navegação entre páginas
   final PageController _pageController = PageController();
-  // Página atual do onboarding
   int _currentPage = 0;
-  // Controlador para o campo de texto do nome
   final TextEditingController _nameController = TextEditingController();
-  // Controla a visibilidade dos botões de navegação
   bool _showNavigationButtons = false;
 
-  // Lista de páginas do onboarding com título, descrição e imagem
   final List<Map<String, String>> _onboardingPages = [
     {
       'title': 'Bem-vindo ao App',
@@ -43,13 +38,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   void dispose() {
-    // Libera os recursos dos controladores
     _pageController.dispose();
     _nameController.dispose();
     super.dispose();
   }
 
-  // Salva o nome do usuário e navega para a tela de boas-vindas
   Future<void> _saveNameAndNavigate() async {
     if (_nameController.text.isNotEmpty) {
       final prefs = await SharedPreferences.getInstance();
@@ -65,7 +58,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     }
   }
 
-  // Navega para a próxima página
   void _nextPage() {
     if (_currentPage < _onboardingPages.length) {
       _pageController.nextPage(
@@ -75,7 +67,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     }
   }
 
-  // Navega para a página anterior
   void _previousPage() {
     if (_currentPage > 0) {
       _pageController.previousPage(
@@ -85,7 +76,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     }
   }
 
-  // Navega para uma página específica
   void _goToPage(int page) {
     _pageController.animateToPage(
       page,
@@ -99,7 +89,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     return Scaffold(
       body: SafeArea(
         child: MouseRegion(
-          // Mostra/esconde os botões de navegação ao passar o mouse
           onEnter: (_) => setState(() => _showNavigationButtons = true),
           onExit: (_) => setState(() => _showNavigationButtons = false),
           child: Stack(
@@ -131,7 +120,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   ),
                 ],
               ),
-              // Botão de voltar
               if (_currentPage > 0 && _currentPage < _onboardingPages.length)
                 Positioned(
                   left: 20,
@@ -145,7 +133,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     ),
                   ),
                 ),
-              // Botão de próximo
               if (_currentPage < _onboardingPages.length)
                 Positioned(
                   right: 20,
@@ -172,7 +159,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   }) {
     return Container(
       decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 216, 210, 213),
+        color: const Color.fromARGB(255, 255, 255, 255),
         shape: BoxShape.circle,
         boxShadow: [
           BoxShadow(
@@ -269,12 +256,15 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             ),
           ),
           const SizedBox(height: 20),
-          TextField(
-            controller: _nameController,
-            decoration: InputDecoration(
-              hintText: 'Digite seu nome',
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
+          SizedBox(
+            width: 300, // Define o tamanho da caixa de texto
+            child: TextField(
+              controller: _nameController,
+              decoration: InputDecoration(
+                hintText: 'Digite seu nome',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
               ),
             ),
           ),
@@ -295,23 +285,26 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   }
 
   Widget _buildPageIndicator() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: List.generate(
-        _onboardingPages.length + 1,
-        (index) => GestureDetector(
-          onTap: () => _goToPage(index),
-          child: Container(
-            margin: const EdgeInsets.symmetric(horizontal: 4),
-            width: 8,
-            height: 8,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: _currentPage == index ? Colors.blue : Colors.grey[300],
+    return SizedBox(
+      width: 150, // Largura ajustável da barra de indicadores
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: List.generate(
+          _onboardingPages.length + 1,
+          (index) => GestureDetector(
+            onTap: () => _goToPage(index),
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 4),
+              width: 8,
+              height: 8,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: _currentPage == index ? Colors.blue : Colors.grey[300],
+              ),
             ),
           ),
         ),
       ),
     );
   }
-} 
+}
