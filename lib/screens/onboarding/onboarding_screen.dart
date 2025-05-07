@@ -269,14 +269,18 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             ),
           ),
           const SizedBox(height: 20),
-          TextField(
-            controller: _nameController,
-            decoration: InputDecoration(
-              hintText: 'Digite seu nome',
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
+          SizedBox(
+            width: 600,
+            child: TextField(
+
+                controller: _nameController,
+                decoration: InputDecoration(
+                  hintText: 'Digite seu nome',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
               ),
-            ),
           ),
           const SizedBox(height: 20),
           ElevatedButton(
