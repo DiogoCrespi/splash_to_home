@@ -7,8 +7,7 @@ Um aplicativo Flutter que demonstra a implementação de:
 - Página de boas-vindas personalizada
 
 ## 🎥 Demonstração
-
-<div align="center">
+<div style="display: flex; justify-content: center;">
   <img src="assets/animations/app_demo.gif" width="300" alt="Demonstração do App">
 </div>
 
