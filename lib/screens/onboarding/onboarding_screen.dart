@@ -256,15 +256,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             ),
           ),
           const SizedBox(height: 20),
-          SizedBox(
-            width: 300, // Define o tamanho da caixa de texto
-            child: TextField(
-              controller: _nameController,
-              decoration: InputDecoration(
-                hintText: 'Digite seu nome',
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
+          TextField(
+            controller: _nameController,
+            decoration: InputDecoration(
+              hintText: 'Digite seu nome',
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
               ),
             ),
           ),
